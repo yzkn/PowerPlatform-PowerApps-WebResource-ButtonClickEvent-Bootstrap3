@@ -21,13 +21,17 @@ const setEvent = async () => {
     if(contentWindow){
         // console.log('contentWindow', contentWindow);
         let btnElem = contentWindow.document.getElementById('btn');
-        if(btnElem){
+        let btnElem2 = contentWindow.document.getElementById('btn2');
+        if(btnElem && btnElem2){
             btnElem.addEventListener('click', function(){
                 // Display the form level notification as an INFO
                 formContext.ui.setFormNotification(message, 'INFO', myUniqueId);
 
                 // Wait for 5 seconds before clearing the notification
                 window.setTimeout(function () { formContext.ui.clearFormNotification(myUniqueId); }, 5000);
+            });
+            btnElem2.addEventListener('click', function(){
+                formContext.getAttribute('ya_name').setValue('Updated!');
             });
             return;
         }
